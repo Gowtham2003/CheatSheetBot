@@ -2,6 +2,7 @@ from telegram.ext import Updater, CommandHandler,MessageHandler,Filters
 import telegram
 import os
 from cheatsheet import querySh
+from carbon import carbonize
 
 
 
@@ -42,6 +43,8 @@ Type
 
 /query [LANG] [QUERY]
 
+/carbon To Create a Carbon of the code
+
 if Any Issues Contact : @Gowtham_2003
 
 A Part of @AlphaProjects 
@@ -58,6 +61,25 @@ Contact Me :
     Telegram : @Gowtham_2003 or @Gowtham2003
 '''
     context.bot.send_message(chat_id=update.effective_chat.id,text=donate )
+
+def carbon(update,context):
+    chat_id = update.effective_chat.id
+    try:
+        text = update.message.reply_to_message.text
+    except AttributeError:
+        text = None
+    if text:
+        code_snap = carbonize(text,chat_id)
+        if code_snap:
+            context.bot.send_photo(chat_id = chat_id,photo=open(code_snap, 'rb'), caption="Carbonized ⚡️\n\nPowered by [Carbon API](https://github.com/cyberboysumanjay/carbon-api)",parse_mode=telegram.ParseMode.MARKDOWN_V2)
+            try:
+                os.remove(code_snap)
+            except FileNotFoundError:
+                pass
+        else:
+            context.bot.send_message(chat_id=update.effective_chat.id,text="Unable to Carbonize the code.\nPlease try again later.")
+    else:
+        context.bot.send_message(chat_id=update.effective_chat.id,text="Reply with /carbon on the text you want to Carbonize ⚡️" )
 
 def queryHandler(query):
     commandList = query.replace("/","").split(" ")
@@ -98,6 +120,9 @@ def main():
     dp.add_handler(help_handler)
 
     donate_handler = CommandHandler("donate",donate)
+    dp.add_handler(donate_handler)
+
+    donate_handler = CommandHandler("carbon",carbon)
     dp.add_handler(donate_handler)
 
     donate_handler = CommandHandler("query",query)
