@@ -1,0 +1,22 @@
+{
+  "name": "Cheat Sheet Bot",
+  "description": "Bot that Helps You to Improve Your Coding ",
+  "keywords": [
+    "telegram",
+    "best",
+    "indian",
+    "python-telegram-bot",
+    "quotes",
+    "productivity",
+    "Developers",
+    "Programming",
+    "Coding",
+    "Cheat Sheet"
+  ],
+  "repository": "https://github.com/Gowtham2003/CheatSheetBot",
+  "env": {
+    "BOT_TOKEN": {
+      "description": "Set Your Bot Token Here",
+    }
+  }
+}
