@@ -49,7 +49,7 @@ python3 bot.py
  `Make sure You have Changed Your Bot Token Before Hosting It`
 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Gowtham2003/CheatSheetBot/tree/master)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Gowtham2003/CheatSheetBot)
 
 
 ### Licence
