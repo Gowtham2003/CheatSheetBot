@@ -69,6 +69,7 @@ def carbon(update,context):
     except AttributeError:
         text = None
     if text:
+        context.bot.send_chat_action(chat_id,"upload_photo")
         code_snap = carbonize(text,chat_id)
         if code_snap:
             context.bot.send_photo(chat_id = chat_id,photo=open(code_snap, 'rb'), caption="Carbonized ⚡️\n\nPowered by [Carbon API](https://github.com/cyberboysumanjay/carbon-api)",parse_mode=telegram.ParseMode.MARKDOWN_V2)
