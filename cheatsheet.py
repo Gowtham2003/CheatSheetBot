@@ -8,6 +8,6 @@ BASE_URL = "http://cht.sh/"
     # return r.text
 
 def querySh(language,query):
-    r = requests.get(BASE_URL+language+"/"+query +"?QT")
+    r = requests.get(BASE_URL+language+"/"+query +"?T")
     return r.text
 
