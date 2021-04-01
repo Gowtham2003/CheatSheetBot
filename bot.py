@@ -85,14 +85,19 @@ def carbon(update,context):
 def queryHandler(query):
     commandList = query.replace("/","").split(" ")
 
-    lang = commandList[1]
-    commandList.pop(0)
-    commandList.pop(0)
-    query = "+".join(commandList)
-    return querySh(lang,query)
+    try:
+        lang = commandList[1]
+        commandList.pop(0)
+        commandList.pop(0)
+        query = "+".join(commandList)
+        return querySh(lang,query)
+    except:
+        return "__error__"
 
 def query(update,context):
     text = queryHandler(update.message.text) 
+    if text=="__error__":
+        text = "Cannot Find Any Results : / , \n Check Your Query "
     if len(text) <= 5:
         text = "Cannot Find Any Results : /"
 
